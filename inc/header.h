@@ -41,6 +41,7 @@ bool mx_is_file_empty(char* name);
 int mx_read_line_(char **lineptr, char delim, const int fd);
 
 //program
+int mx_atoi_positive_valid(char *str);
 void validation(int argc, char *argv[]);
 bool mx_is_valid_first_line(char *str);
 bool mx_is_valid_string(char* str);

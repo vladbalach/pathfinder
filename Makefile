@@ -13,6 +13,7 @@ SRCS = ./src/main.c \
 	./src/mx_is_file_empty.c \
 	./src/mx_is_valid_first_line.c \
 	./src/validation.c \
+	./src/mx_atoi_positive_valid.c \
 
 CTMP = main.c \
 	mx_file_to_list.c \
@@ -21,6 +22,7 @@ CTMP = main.c \
 	mx_is_file_empty.c \
 	mx_is_valid_first_line.c \
 	validation.c \
+	mx_atoi_positive_valid.c \
 
 OUTTMP = main.o \
 	mx_file_to_list.o \
@@ -29,6 +31,7 @@ OUTTMP = main.o \
 	mx_is_file_empty.o \
 	mx_is_valid_first_line.o \
 	validation.o \
+	mx_atoi_positive_valid.o \
 
 OUT = ./obj/main.o \
 	./obj/mx_file_to_list.o \
@@ -37,6 +40,7 @@ OUT = ./obj/main.o \
 	./obj/mx_is_file_empty.o \
 	./obj/mx_is_valid_first_line.o \
 	./obj/validation.o \
+	./obj/mx_atoi_positive_valid.o \
 
 DFLAGS = -fsanitize=address -g
 CFLSGS = -std=c11 -Wall -Wextra -Wpedantic -Werror

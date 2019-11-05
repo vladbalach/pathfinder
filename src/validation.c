@@ -28,7 +28,8 @@ void validation(int argc, char *argv[]) {
         exit(1);
     }
     
-    while((status = mx_read_line_(&str, '\n', fd)) != -1 ) {
+    //while((status = mx_read_line_(&str, '\n', fd)) != -1 ) {
+        while(mx_read_line_(&str, '\n', fd)) {
         count++;
         if(!mx_is_valid_string(str)) {//valid string A-B,0
             mx_printerr("error: line ");
@@ -36,7 +37,7 @@ void validation(int argc, char *argv[]) {
             mx_printerr(" isn't valid");
             exit(1);
         }
-        if(status == 0) break;
+       // if(status == 0) break;
     }
      
     close(fd);
