@@ -186,21 +186,10 @@ void deikstra(t_road *roads, int countPoints, int countRoads) {
     printf("INIT MAS\n");
     for(int i = 0; i < countPoints; i++) {
         for(int j = 0; j < countPoints; j++) {
-            //if(*(matrixMinDists + i * countPoints + j) > 10000000) {
-             //   printf("%3d",-1);
-            //} else
             printf("%3d ", *(matrixMinDists + i * countPoints + j));
         }
         printf("\n");
     }
-     printf("CAME FROM\n");
-    for(int i = 0; i < countPoints; i++) {
-        for(int j = 0; j < countPoints; j++) {
-            printf("%3d ", matrixCameFrom[i * countPoints + j][0]);
-        }
-        printf("\n");
-    }
-    printf("\n");
     
     //cycle
     for(int I = 0 ; I < countPoints; I++) {
@@ -211,19 +200,19 @@ void deikstra(t_road *roads, int countPoints, int countRoads) {
     
         while((minIndex = findMin(matrixMinDists, onRightPlace, countPoints, I)) != -1) {
            // printf("SAME DISTANCE %d\n", *(matrixMinDists + I * countPoints + i));
-                            printf("I = %d\n", I);
-                            //printf("i = %d\n", i);
-                            printf("minIndex = %d\n", minIndex);
-                            for(int i = 0; i < countPoints; i++) {
-                                printf("%d: ",i);
-                                    for(int j = 0; j < countPoints; j++) {
-                                        //if(*(matrixMinDists + i * countPoints + j) > 10000000) {
-                                        //    printf("%3d",-1);
-                                        //} else
-                                        printf("%3d ", *(matrixMinDists + i * countPoints + j));
-                                    }
-                                    printf("\n");
-                                }
+                            // printf("I = %d\n", I);
+                            // //printf("i = %d\n", i);
+                            // printf("minIndex = %d\n", minIndex);
+                            // for(int i = 0; i < countPoints; i++) {
+                            //     printf("%d: ",i);
+                            //         for(int j = 0; j < countPoints; j++) {
+                            //             //if(*(matrixMinDists + i * countPoints + j) > 10000000) {
+                            //             //    printf("%3d",-1);
+                            //             //} else
+                            //             printf("%3d ", *(matrixMinDists + i * countPoints + j));
+                            //         }
+                            //         printf("\n");
+                            //     }
             //printf("MIN INDEX = %d\n", minIndex);
             // for(int i = 0; i < countPoints; i++) {
             //     if(onRightPlace[i] == -1) {//check only if no right place
@@ -297,16 +286,14 @@ void deikstra(t_road *roads, int countPoints, int countRoads) {
         free(onRightPlace);
     }
     //printf("\n MIN INDEX = %d\n", minIndex);
+
+     printf("WEIGHTS\n");
     for(int i = 0; i < countPoints; i++) {
         for(int j = 0; j < countPoints; j++) {
-            //if(*(matrixMinDists + i * countPoints + j) > 10000000) {
-            //    printf("%3d",-1);
-            //} else
-            printf("%3d ", *(matrixMinDists + i * countPoints + j));
+            printf("%3d ", matrixMinDists[i * countPoints + j]);
         }
         printf("\n");
     }
-
      printf("CAME FROM\n");
     for(int i = 0; i < countPoints; i++) {
         for(int j = 0; j < countPoints; j++) {
@@ -332,30 +319,128 @@ void deikstra(t_road *roads, int countPoints, int countRoads) {
         }
         printf("\n");
     }
+
+    printf("MATRIX OF 3 WAYS\n");
+    for(int i = 0; i < countPoints; i++) {
+        for(int j = 0; j < countPoints; j++) {
+            if(matrixCountCameFrom[i * countPoints + j] > 2)
+            printf("%3d ", matrixCameFrom[i * countPoints + j][2]);
+            else printf("%3d ", -1);
+        }
+        printf("\n");
+    }
     output(matrixCameFrom, countPoints, matrixCountCameFrom);
 }
 //OUTPUT/////////////////
+
 void output(int **matrixComeFrom, int countOfPoints, int* matrixCountWays) {
+    // for(int i = 0 ; i < countOfPoints; i++)
+    // for(int j = i + 1; j < countOfPoints; j++) {
+    //     bool repeat = true;
+    //     while(repeat) {
+    //         repeat = false;
+    //         int indexTo = i;
+    //         int currentIndex = j;
+    //         int layer = 1;
+    //         int oldindex = j;
+    //         // printf("%d ", i);
+            
+    //             printf("%d ", currentIndex);
+    //             while(indexTo != currentIndex) {
+                    
+    //                 if(*(matrixCountWays + countOfPoints * i + currentIndex) > 1) {
+                    
+    //                     oldindex = currentIndex;
+    //                     (*(matrixCountWays + countOfPoints * i + currentIndex))--;
+    //                     currentIndex = *(*(matrixComeFrom + countOfPoints * i + currentIndex) + 0);
+    //                     *(*(matrixComeFrom + countOfPoints * i + oldindex) + 0) = 
+    //                     *(*(matrixComeFrom + countOfPoints * i + oldindex) + 
+    //                     *(matrixCountWays + countOfPoints * i + oldindex));
+    //                     repeat = true;
+    //                 } else
+    //                 currentIndex = *(matrixComeFrom + countOfPoints * i + currentIndex)[0];
+    //                 printf("%d ", currentIndex);
+    //             }
+    //             printf(" FROM %d; TO %d\n", j, indexTo);
+    //     }
+    // }
+
     for(int i = 0 ; i < countOfPoints; i++)
     for(int j = i + 1; j < countOfPoints; j++) {
-        int indexTo = i;
-        int currentIndex = j;
-        int layer = 1;
-        // printf("%d ", i);
-            printf("%d ", currentIndex);
-            while(indexTo != currentIndex) {
-                currentIndex = *(matrixComeFrom + countOfPoints * i + currentIndex)[layer-1];
-                if(*(matrixCountWays + countOfPoints * i + currentIndex) > layer) {
-                    
-                    layer++;
-                }
-                printf("%d ", currentIndex);
-            }
-            printf(" FROM %d; TO %d\n", j, indexTo);
-        }
+        bool repeat = true;
+        while(repeat) {
+            repeat = false;
+            int indexTo = i;
+            int currentIndex = j;
+            int layer = 1;
+            int oldindex = j;
+            // printf("%d ", i);
             
+                printf("%d ", currentIndex);
+                while(indexTo != currentIndex) {
+                    
+                    if(*(matrixCountWays + countOfPoints * i + currentIndex) > 1) {
+                    
+                        oldindex = currentIndex;
+                        (*(matrixCountWays + countOfPoints * i + currentIndex))--;
+                        currentIndex = *(*(matrixComeFrom + countOfPoints * i + currentIndex) + 0);
+                        *(*(matrixComeFrom + countOfPoints * i + oldindex) + 0) = 
+                        *(*(matrixComeFrom + countOfPoints * i + oldindex) + 
+                        *(matrixCountWays + countOfPoints * i + oldindex));
+                        repeat = true;
+                    } else
+                    currentIndex = *(matrixComeFrom + countOfPoints * i + currentIndex)[0];
+                    printf("%d ", currentIndex);
+                }
+                printf(" FROM %d; TO %d\n", j, indexTo);
+        }
+    }
+    
+}   
+
+
+
+
+
+
+
+
+
+
+
+
+//     for(int i = 0; i < countOfPoints; i ++) {
+//         for(int j = i + 1; j < countOfPoints; j++) {
+//             bool repeat = true;
+//             while(repeat) {
+//                 repeat = false;
+//                 int indexFrom = i;
+//                 int indexTo = j;
+//                 int currentIndex = j;
+//                 int oldIndex = j;
+//                 printf("%d ", indexFrom);
+//                 while(currentIndex != indexTo) {
+//                     printf("%d ", currentIndex);
+//                     // if(*(matrixCountWays + i * countOfPoints + currentIndex) == 2) {
+//                     //     (*(matrixCountWays + i * countOfPoints + currentIndex))--;
+//                     //     oldIndex = *(matrixComeFrom + i * countOfPoints + currentIndex)[0];
+//                     //     *(matrixComeFrom + i * countOfPoints + currentIndex)[0] =
+//                     //     *(matrixComeFrom + i * countOfPoints + currentIndex)[1];
+//                     //     currentIndex = oldIndex;
+//                     //     repeat = true;
+//                     // } else
+//                         currentIndex = *(matrixComeFrom + i * countOfPoints + currentIndex)[0];
+                    
+//                 }
+//                 printf("FROM %d TO %d\n", indexFrom, indexTo);
+//             }
+            
+//         }
+//     }
+
+
         
-}
+// }
 
 
 //////////////////////
