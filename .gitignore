@@ -3,7 +3,6 @@
 *.o
 *.out
 *.txt
-main.c
 libmx
 libmx.a
 .vscode/

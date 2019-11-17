@@ -14,6 +14,13 @@ SRCS = ./src/main.c \
 	./src/mx_is_valid_first_line.c \
 	./src/validation.c \
 	./src/mx_atoi_positive_valid.c \
+	./src/createMatrix.c \
+	./src/initComeFrom.c \
+	./src/initIsOnPlace.c \
+	./src/initPathMas.c \
+	./src/findMin.c \
+	./src/find.c \
+	./src/cpyStructure.c \
 
 CTMP = main.c \
 	mx_file_to_list.c \
@@ -23,6 +30,13 @@ CTMP = main.c \
 	mx_is_valid_first_line.c \
 	validation.c \
 	mx_atoi_positive_valid.c \
+	createMatrix.c \
+	initComeFrom.c \
+	initIsOnPlace.c \
+	initPathMas.c \
+	findMin.c \
+	find.c \
+	cpyStructure.c \
 
 OUTTMP = main.o \
 	mx_file_to_list.o \
@@ -32,6 +46,13 @@ OUTTMP = main.o \
 	mx_is_valid_first_line.o \
 	validation.o \
 	mx_atoi_positive_valid.o \
+	createMatrix.o \
+	initComeFrom.o \
+	initIsOnPlace.o \
+	initPathMas.o \
+	findMin.o \
+	find.o \
+	cpyStructure.o \
 
 OUT = ./obj/main.o \
 	./obj/mx_file_to_list.o \
@@ -41,6 +62,13 @@ OUT = ./obj/main.o \
 	./obj/mx_is_valid_first_line.o \
 	./obj/validation.o \
 	./obj/mx_atoi_positive_valid.o \
+	./obj/createMatrix.o \
+	./obj/initComeFrom.o \
+	./obj/initIsOnPlace.o \
+	./obj/initPathMas.o \
+	./obj/findMin.o \
+	./obj/find.o \
+	./obj/cpyStructure.o \
 
 DFLAGS = -fsanitize=address -g
 CFLSGS = -std=c11 -Wall -Wextra -Wpedantic -Werror
