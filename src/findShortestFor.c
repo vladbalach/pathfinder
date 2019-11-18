@@ -13,9 +13,9 @@ void findShortestFor(t_point *points, t_road *roads, unsigned long long *mainMat
     initPathMas(mainMatrix, listOfPaths, countPoints, index);
     
     find(&outputList, listOfPaths, mainMatrix, countPoints, index);
-    // reverseList(&outputList);
-    // sortList(&outputList, countPoints);
-    // output(index, points, outputList, countPoints, roads, countRoads);
+    reverseList(&outputList);
+    sortList(&outputList, countPoints);
+    output(index, points, outputList, countPoints, roads, countRoads);
     while(listOfPaths) {
         t_listOfPaths *tmp = listOfPaths->next;
         free(listOfPaths->comeFrom);

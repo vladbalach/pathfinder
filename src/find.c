@@ -96,7 +96,7 @@ void find(t_listOfOutput **listOfOutput, t_listOfPaths *listOfPaths, unsigned lo
                         cpyStructure(listOfPaths, listOfPaths->next, countPoints);
                         listOfPaths->comeFrom[i] = minIndex;
                         //t_listOfPaths *tmp = list 
-                        //find(listOfOutput, listOfPaths->next, mainMatrix, countPoints, index);
+                        find(listOfOutput, listOfPaths->next, mainMatrix, countPoints, index);
 
                         //free(listOfPaths->next);
                     }
