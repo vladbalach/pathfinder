@@ -7,7 +7,6 @@ HEADTMP = header.h \
 	libmx.h \
 
 SRCS = ./src/main.c \
-	./src/mx_file_to_list.c \
 	./src/mx_is_valid_string.c \
 	./src/mx_read_line.c \
 	./src/mx_is_file_empty.c \
@@ -34,9 +33,12 @@ SRCS = ./src/main.c \
 	./src/indexOfPoint.c \
 	./src/mx_file_to_masPoints.c \
 	./src/index_of_same_point.c \
+	./src/fillListOfOutput.c \
+	./src/isDuplicate.c \
+	./src/pushBack.c \
+	./src/createNode.c \
 
 CTMP = main.c \
-	mx_file_to_list.c \
 	mx_is_valid_string.c \
 	mx_read_line.c \
 	mx_is_file_empty.c \
@@ -63,9 +65,12 @@ CTMP = main.c \
 	indexOfPoint.c \
 	mx_file_to_masPoints.c \
 	index_of_same_point.c \
+	fillListOfOutput.c \
+	isDuplicate.c \
+	pushBack.c \
+	createNode.c \
 
 OUTTMP = main.o \
-	mx_file_to_list.o \
 	mx_is_valid_string.o \
 	mx_read_line.o \
 	mx_is_file_empty.o \
@@ -92,9 +97,13 @@ OUTTMP = main.o \
 	indexOfPoint.o \
 	mx_file_to_masPoints.o \
 	index_of_same_point.o \
+	fillListOfOutput.o \
+	isDuplicate.o \
+	pushBack.o \
+	createNode.o \
+	
 
 OUT = ./obj/main.o \
-	./obj/mx_file_to_list.o \
 	./obj/mx_is_valid_string.o \
 	./obj/mx_read_line.o \
 	./obj/mx_is_file_empty.o \
@@ -121,32 +130,32 @@ OUT = ./obj/main.o \
 	./obj/indexOfPoint.o \
 	./obj/mx_file_to_masPoints.o \
 	./obj/index_of_same_point.o \
+	./obj/fillListOfOutput.o \
+	./obj/isDuplicate.o \
+	./obj/pushBack.o \
+	./obj/createNode.o \
 
 DFLAGS = -fsanitize=address -g
 CFLSGS = -std=c11 -Wall -Wextra -Wpedantic -Werror
 
-all: installTest uninstall
+all: clean install uninstall
 
 install:
+	@cd libmx && make install
 	@cp $(SRCS) .
 	@cp $(INC) .
 	@clang $(CFLSGS) -c $(CTMP)
-	@clang $(CFLSGS) libmx.a $(CTMP) -o $(NAME) 
-	@mkdir -p obj
-	@mv $(OUTTMP) ./obj
-installTest:
-	@cp $(SRCS) .
-	@cp $(INC) .
-	@gcc -c $(CTMP)
-	@gcc libmx.a $(CTMP) -o $(NAME) 
+	@clang $(CFLSGS) ./libmx/libmx.a $(CTMP) -o $(NAME) 
 	@mkdir -p obj
 	@mv $(OUTTMP) ./obj
 uninstall:
+	@cd libmx && make uninstall
 	@rm -rf $(CTMP) 
 	@rm -rf $(OUT) 
 	@rm -rf $(HEADTMP) 
 	@rm -rf ./obj/ 
 clean: 
+	@cd libmx && make clean
 	@rm -rf $(NAME)
 	@rm -rf $(CTMP)
 	@rm -rf $(OUT)

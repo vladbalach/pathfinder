@@ -1,30 +1,29 @@
 #include "header.h"
 
 void validation(int argc, char *argv[]) {
-    int status = 0;
     int count = 1;
      if(argc != 2) {
-        mx_printstr("usage: ./pathfinder [filename]");
+        mx_printerr("usage: ./pathfinder [filename]\n");
         exit(1);
     }
     
     int fd = open(argv[1], O_RDONLY);
     if(fd < 0) {
-        mx_printstr("error: file ");
-        mx_printstr(argv[1]);
-        mx_printstr(" doesn't exist");
+        mx_printerr("error: file ");
+        mx_printerr(argv[1]);
+        mx_printerr(" doesn't exist\n");
         exit(1);
     }
     if(mx_is_file_empty(argv[1])) {
-        mx_printstr("error: file ");
-        mx_printstr(argv[1]);
-        mx_printstr(" is empty");
+        mx_printerr("error: file ");
+        mx_printerr(argv[1]);
+        mx_printerr(" is empty\n");
         exit(1);
     }
     char* str = 0; 
     mx_read_line_(&str, '\n', fd);
     if(!mx_is_valid_first_line(str)) {
-        mx_printstr("error: line 1 isn't valid");
+        mx_printerr("error: line 1 isn't valid\n");
         free(str);
         exit(1);
     }
@@ -33,9 +32,11 @@ void validation(int argc, char *argv[]) {
         count++;
         if(!mx_is_valid_string(str)) {//valid string A-B,0
             mx_printerr("error: line ");
-            mx_printerr(mx_itoa(count));
-            mx_printerr(" isn't valid");
+            char *s = mx_itoa(count);
+            mx_printerr(s);
+            mx_printerr(" isn't valid\n");
             free(str);
+            free(s);
             exit(1);
         }
     }

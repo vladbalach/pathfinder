@@ -3,7 +3,6 @@
 *.o
 *.out
 *.txt
-libmx
 libmx.a
 .vscode/
 pathfinder

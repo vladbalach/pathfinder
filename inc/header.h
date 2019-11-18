@@ -86,6 +86,10 @@ void freeList(t_listOfPaths *head);
 void sortList(t_listOfOutput **listOfOutput, int countPoints);
 void reverseList(t_listOfOutput **listOfOutput);
 
+t_listOfOutput *createNode(int *data);
+void pushBack(t_listOfOutput **list, int *data);
+bool isDuplicate(t_listOfOutput *listOfOutput, int *mas, int countPoints);
+void fillListOfOutput(t_listOfOutput **listOfOutput, t_listOfPaths *listOfPaths, int countPoints, int index);
 int index_of_same_point(int size, char*str, t_point *points);
 int mx_file_to_masPoints(char *name, t_point **points);
 int indexOfPoint(t_point **points, char * str, int count);
@@ -99,7 +103,7 @@ void findShortestFor(t_point *points, t_road *roads, unsigned long long *mainMat
 void deikstra(t_point *points, t_road *roads, int countRoads, int countPoints);
 void initIsOnPlace(char *isOnPlace, int count, int index);
 void initComeFrom(int *comeFrom, int countPoints, int index);
-unsigned long long* createMatrix(t_point *points, t_road *roads, int countRoads, int countPoints);
+unsigned long long* createMatrix(t_road *roads, int countRoads, int countPoints);
 void initPathMas(unsigned long long *mainMatrix, t_listOfPaths *listOfPaths, int countPoints, int index);
 int findMin(t_listOfPaths *pathList, int count);
 void find(t_listOfOutput **output, t_listOfPaths *listOfPaths, unsigned long long *mainMatrix, int countPoints, int index);

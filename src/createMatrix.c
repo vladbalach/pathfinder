@@ -1,6 +1,6 @@
 #include "header.h"
 
-unsigned long long* createMatrix(t_point *points, t_road *roads, int countRoads, int countPoints) {
+unsigned long long* createMatrix(t_road *roads, int countRoads, int countPoints) {
     //CREATE MAIN MATRIX
     unsigned long long *matrix = (unsigned long long*) malloc (sizeof(unsigned long long) * countPoints * countPoints);
     for(int i = 0; i < countPoints * countPoints; i++) {
