@@ -39,7 +39,6 @@ bool isDuplicate(t_listOfOutput *listOfOutput, int *mas, int countPoints) {
 void fillListOfOutput(t_listOfOutput **listOfOutput, t_listOfPaths *listOfPaths, int countPoints, int index) {
 
     int currentIndex = 0;
-    
     for (int i = index + 1; i < countPoints; i++) {
         int *tmpMas = malloc(sizeof(int) * (countPoints + 1));
         for(int k = 0; k < countPoints+1; k++) {
@@ -64,9 +63,11 @@ void fillListOfOutput(t_listOfOutput **listOfOutput, t_listOfPaths *listOfPaths,
     }
 }
 
+
+
 void find(t_listOfOutput **listOfOutput, t_listOfPaths *listOfPaths, unsigned long long *mainMatrix, int countPoints, int index) {
+   
     int minIndex = 0;
-    t_listOfPaths *tmp = 0;
     while(minIndex != -1) {
         minIndex = findMin(listOfPaths, countPoints);
         //printf("minIndex = %d\n", minIndex);
@@ -86,8 +87,7 @@ void find(t_listOfOutput **listOfOutput, t_listOfPaths *listOfPaths, unsigned lo
                     if(listOfPaths->path[i] == listOfPaths->path[minIndex] 
                     + *(mainMatrix + countPoints * minIndex + i)) {
                         //printf("RECURSION\n");
-                        
-                        listOfPaths->next = malloc (sizeof(t_listOfPaths));
+                        listOfPaths->next = malloc(sizeof(t_listOfPaths));
                         listOfPaths->next->next = NULL;
                         listOfPaths->next->path = malloc(sizeof(unsigned long long) * countPoints);
                         listOfPaths->next->comeFrom = malloc(sizeof(int) * countPoints);
@@ -95,7 +95,8 @@ void find(t_listOfOutput **listOfOutput, t_listOfPaths *listOfPaths, unsigned lo
                         listOfPaths->next->isOnPlace = malloc(sizeof(char) * countPoints);
                         cpyStructure(listOfPaths, listOfPaths->next, countPoints);
                         listOfPaths->comeFrom[i] = minIndex;
-                        find(listOfOutput, listOfPaths->next, mainMatrix, countPoints, index);
+                        //t_listOfPaths *tmp = list 
+                        //find(listOfOutput, listOfPaths->next, mainMatrix, countPoints, index);
 
                         //free(listOfPaths->next);
                     }
@@ -103,33 +104,15 @@ void find(t_listOfOutput **listOfOutput, t_listOfPaths *listOfPaths, unsigned lo
             }
         }
     }
-
-        fillListOfOutput(listOfOutput, listOfPaths, countPoints, index);
-        // for(int i = 0; i < countPoints; i++) {
-        //     printf("%d ", listOfPaths->comeFrom[i]);
-        // }
-        // printf("\n");
-    // tmp = NewList;
-    //  printf("INDEX = %d: ", index);
-    // while(tmp) {
-    //     printf("SS\n");
-    //     tmp = tmp->next;
-    // }
-    //     tmp = malloc(sizeof(t_listOfPaths));
-    //     tmp->comeFrom = malloc(sizeof(int) * countPoints);
-    //     tmp->path = malloc(sizeof(unsigned long long) * countPoints);
-    //     tmp->isOnPlace = malloc(sizeof(char) * countPoints);
-    //     cpyStructure(listOfPaths, tmp, countPoints);
     
-
-    //   printf("\n////////////////\n");
-    //    tmp = NewList;
-    // while(tmp) {
-    //     printf("PATN FOR %2d: ", index);
-    //     for(int i = 0; i < countPoints; i++) {
-    //         printf("%2d ", tmp->comeFrom[i]);
-    //     }
-    //     printf("\n");
-    //     tmp = tmp->next;
-    // }
+     
+        fillListOfOutput(listOfOutput, listOfPaths, countPoints, index);
+        // while(listOfPaths) {
+        //     t_listOfPaths *tmp = listOfPaths->next;
+        //     free(listOfPaths->path);
+        //     free(listOfPaths->isOnPlace);
+        //     free(listOfPaths->comeFrom);
+        //     free(listOfPaths);
+        //     listOfPaths = tmp;
+        // }
 }

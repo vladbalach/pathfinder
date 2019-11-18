@@ -25,21 +25,21 @@ void validation(int argc, char *argv[]) {
     mx_read_line_(&str, '\n', fd);
     if(!mx_is_valid_first_line(str)) {
         mx_printstr("error: line 1 isn't valid");
+        free(str);
         exit(1);
     }
     
-    //while((status = mx_read_line_(&str, '\n', fd)) != -1 ) {
         while(mx_read_line_(&str, '\n', fd)) {
         count++;
         if(!mx_is_valid_string(str)) {//valid string A-B,0
             mx_printerr("error: line ");
             mx_printerr(mx_itoa(count));
             mx_printerr(" isn't valid");
+            free(str);
             exit(1);
         }
-       // if(status == 0) break;
     }
-     
+    free(str);
     close(fd);
     return;
 }

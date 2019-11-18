@@ -21,6 +21,19 @@ SRCS = ./src/main.c \
 	./src/findMin.c \
 	./src/find.c \
 	./src/cpyStructure.c \
+	./src/sortList.c \
+	./src/reverseList.c \
+	./src/deikstra.c \
+	./src/findShortestFor.c \
+	./src/output.c \
+	./src/lengthOfList.c \
+	./src/weightBetweenPoints.c \
+	./src/indexToNameOfPoint.c \
+	./src/mx_file_to_masRoads.c \
+	./src/haveRoad.c \
+	./src/indexOfPoint.c \
+	./src/mx_file_to_masPoints.c \
+	./src/index_of_same_point.c \
 
 CTMP = main.c \
 	mx_file_to_list.c \
@@ -37,6 +50,19 @@ CTMP = main.c \
 	findMin.c \
 	find.c \
 	cpyStructure.c \
+	sortList.c \
+	reverseList.c \
+	deikstra.c \
+	findShortestFor.c \
+	output.c \
+	lengthOfList.c \
+	weightBetweenPoints.c \
+	indexToNameOfPoint.c \
+	mx_file_to_masRoads.c \
+	haveRoad.c \
+	indexOfPoint.c \
+	mx_file_to_masPoints.c \
+	index_of_same_point.c \
 
 OUTTMP = main.o \
 	mx_file_to_list.o \
@@ -53,6 +79,19 @@ OUTTMP = main.o \
 	findMin.o \
 	find.o \
 	cpyStructure.o \
+	sortList.o \
+	reverseList.o \
+	deikstra.o \
+	findShortestFor.o \
+	output.o \
+	lengthOfList.o \
+	weightBetweenPoints.o \
+	indexToNameOfPoint.o \
+	mx_file_to_masRoads.o \
+	haveRoad.o \
+	indexOfPoint.o \
+	mx_file_to_masPoints.o \
+	index_of_same_point.o \
 
 OUT = ./obj/main.o \
 	./obj/mx_file_to_list.o \
@@ -69,6 +108,19 @@ OUT = ./obj/main.o \
 	./obj/findMin.o \
 	./obj/find.o \
 	./obj/cpyStructure.o \
+	./obj/sortList.o \
+	./obj/reverseList.o \
+	./obj/deikstra.o \
+	./obj/findShortestFor.o \
+	./obj/output.o \
+	./obj/lengthOfList.o \
+	./obj/weightBetweenPoints.o \
+	./obj/indexToNameOfPoint.o \
+	./obj/mx_file_to_masRoads.o \
+	./obj/haveRoad.o \
+	./obj/indexOfPoint.o \
+	./obj/mx_file_to_masPoints.o \
+	./obj/index_of_same_point.o \
 
 DFLAGS = -fsanitize=address -g
 CFLSGS = -std=c11 -Wall -Wextra -Wpedantic -Werror

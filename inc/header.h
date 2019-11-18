@@ -83,7 +83,20 @@ bool mx_is_valid_string(char* str);
 
 //ALGORITHM
 void freeList(t_listOfPaths *head);
+void sortList(t_listOfOutput **listOfOutput, int countPoints);
+void reverseList(t_listOfOutput **listOfOutput);
 
+int index_of_same_point(int size, char*str, t_point *points);
+int mx_file_to_masPoints(char *name, t_point **points);
+int indexOfPoint(t_point **points, char * str, int count);
+bool haveRoad(int index1, int index2, int weight, t_road **roads, int count);
+int mx_file_to_masRoads(char *name, t_road **roads, t_point **points, int count);
+char *indexToNameOfPoint(t_point *points, int countOfPoints, int index);
+int weightBetweenPoints(t_road *roads, int countOfRoads, int index1, int index2);
+int lengthOfList(t_listOfOutput *list);
+void output(int index, t_point *points, t_listOfOutput *outputList, int countPoints, t_road *roads, int countOfRoads);
+void findShortestFor(t_point *points, t_road *roads, unsigned long long *mainMatrix, int countPoints, int countRoads, int index);
+void deikstra(t_point *points, t_road *roads, int countRoads, int countPoints);
 void initIsOnPlace(char *isOnPlace, int count, int index);
 void initComeFrom(int *comeFrom, int countPoints, int index);
 unsigned long long* createMatrix(t_point *points, t_road *roads, int countRoads, int countPoints);
