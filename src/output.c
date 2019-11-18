@@ -6,7 +6,7 @@ static void printfSmth(t_point*points, t_listOfOutput *tmp, int countPoints, int
     mx_printstr(indexToNameOfPoint(points, countPoints, tmp->masOfOutput[0]));
     mx_printstr(" -> ");
     mx_printstr(indexToNameOfPoint(points, countPoints, tmp->masOfOutput[i]));
-    mx_printstr("\nRoute ");
+    mx_printstr("\nRoute: ");
 }
 
 static void outputRow(t_point* points, t_road* roads, int countPoints, int countOfRoads, t_listOfOutput* tmp, int i) {
