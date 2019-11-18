@@ -26,7 +26,6 @@ int main(int argc, char *argv[]) {
     free(str);
     //transform file to mas Roads
     countRoads = mx_file_to_masRoads(argv[1], &roads, &points, countPoints);
-    deikstra(points, roads, countRoads, countPoints); 
     freePoints(points, countPoints);
     free(roads);
     return 0;
